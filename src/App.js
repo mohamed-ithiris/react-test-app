@@ -1,13 +1,11 @@
-// import logo from './logo.svg';
-import { useState } from 'react';
-import './App.css';
-import { TodoBox } from './components/TodoBox';
+import React from 'react';
+import TodoApp from './components/TodoApp';
 
 function App() {
-  const [todos, setTodos] = useState(["complete project", "do work"]);
+
   return (
     <div className="App">
-      <TodoBox todoValue={todos} />
+      <TodoApp />
     </div>
   );
 }
