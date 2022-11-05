@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// Custom fonts used in this Todo App
+import "./fonts/anodina/Anodina-Bold.otf";
+import "./fonts/anodina/Anodina-ExtraBold.otf";
+import "./fonts/anodina/Anodina-Regular.otf";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
