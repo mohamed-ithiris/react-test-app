@@ -5,7 +5,7 @@ import {
 } from 'antd';
 
 
-export default function CustomTextField({ textValue, onChangeValue, isDisabled, taskLabel }) {
+export default function CustomTextField({ refValue, textValue, onChangeValue, isDisabled, taskLabel }) {
     return (
         <Form
             labelCol={{ span: 4 }}
@@ -13,16 +13,16 @@ export default function CustomTextField({ textValue, onChangeValue, isDisabled, 
             layout="horizontal"
         >
             <Form.Item label={taskLabel}>
-                <Input disabled={isDisabled} value={textValue} onChange={onChangeValue} placeholder="Type here..." />
+                <Input ref={refValue} disabled={isDisabled} value={textValue} onChange={onChangeValue} placeholder="Type here..." />
             </Form.Item>
         </Form>
     )
 }
 
 CustomTextField.propTypes = {
-    textValue: PropTypes.string.isRequired,
-    onChangeValue: PropTypes.func.isRequired,
+    textValue: PropTypes.string,
+    onChangeValue: PropTypes.func,
     taskId: PropTypes.string,
     isDisabled: PropTypes.bool,
-    taskLabel: PropTypes.string.isRequired,
+    taskLabel: PropTypes.string,
 }

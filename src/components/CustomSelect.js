@@ -34,5 +34,5 @@ CustomSelect.propTypes = {
 }
 
 CustomSelect.defaultProps = {
-    selectOptions: ["Todo", "Onprogress", "Completed"]
+    selectOptions: ["Todo", "Inprogress", "Completed"]
 }

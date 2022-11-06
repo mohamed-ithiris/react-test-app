@@ -1,24 +1,24 @@
 import TodoBox from "./TodoBox";
 import PropTypes from "prop-types";
+import { List } from 'antd';
 
 export default function TodoList({ todoList, onDeleteTask, onEditTask }) {
     return (
-        <>
-            {
-                todoList.map((list, index) => {
-                    return (
-                        <TodoBox
-                            key={"todos" + index}
-                            id={list.id}
-                            todoValue={list.task}
-                            todoStatus={list.status}
-                            onDeleteTask={onDeleteTask}
-                            onEditTask={onEditTask}
-                        />
-                    );
-                })
-            }
-        </>
+        <List
+            itemLayout="horizontal"
+            dataSource={todoList}
+            renderItem={(list, index) => (
+                <TodoBox
+                    key={"todos" + index}
+                    sNo={index + 1}
+                    id={list.id}
+                    todoValue={list.task}
+                    todoStatus={list.status}
+                    onDeleteTask={onDeleteTask}
+                    onEditTask={onEditTask}
+                />
+            )}
+        />
     )
 }
 

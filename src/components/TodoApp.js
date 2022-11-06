@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
-import TodoList from './TodoList';
-import Header from './Header';
+import TodoHeader from './TodoHeader';
 import uuid from 'uuidv4';
 import CustomModal from './CustomModal';
+import { Card } from 'antd';
+import { notification } from 'antd';
+import TabsContainer from './TabsContainer';
 
+const openNotification = (placement) => {
+    notification.warning({
+        message: `Warning`,
+        description:
+            'Could not process blank!',
+        placement,
+    });
+};
 
 export default function TodoApp() {
     const taskValue = React.useRef();
@@ -18,7 +28,7 @@ export default function TodoApp() {
         {
             id: "2",
             task: "Practice React",
-            status: "Onprogress",
+            status: "Inprogress",
         },
         {
             id: "3",
@@ -28,14 +38,20 @@ export default function TodoApp() {
     ]);
 
     function addTask() {
+        let newTaskValue = taskValue.current.value;
+        if (newTaskValue === "") {
+            openNotification("top");
+            return null;
+        }
         const todosList = todos.concat();
         let newTask = {
             id: uuid(),
-            task: taskValue.current.value,
+            task: newTaskValue,
             status: "Todo",
         }
         todosList.push(newTask);
         setTodos(todosList);
+        taskValue.current.value = "";
     }
 
     function setTaskData(id, todoValue, todoStatus) {
@@ -67,24 +83,26 @@ export default function TodoApp() {
     }
 
     return (
-        <>
-            <CustomModal
-                isOpen={openDialog}
-                onCancel={handleCancel}
-                onUpdate={updateTask}
-                editValue={editTask}
-                onSetEditTask={setEditTask}
-            />
-            <Header
-                refValue={taskValue}
-                onAddTask={addTask}
-            />
-            <TodoList
-                todoList={todos}
-                onDeleteTask={deleteTask}
-                onEditTask={setTaskData}
-            />
-        </>
+        <div className='container'>
+            <Card className='cardStyle'>
+                <CustomModal
+                    isOpen={openDialog}
+                    onCancel={handleCancel}
+                    onUpdate={updateTask}
+                    editValue={editTask}
+                    onSetEditTask={setEditTask}
+                />
+                <TodoHeader
+                    refValue={taskValue}
+                    onAddTask={addTask}
+                />
+                <TabsContainer
+                    todos={todos}
+                    deleteTask={deleteTask}
+                    setTaskData={setTaskData}
+                />
+            </Card>
+        </div>
     );
 }
 
