@@ -24,17 +24,8 @@ export default function TodoApp() {
             id: "1",
             task: "study react",
             status: "Todo",
+            created: "Sun Nov 06 2022 22:18:09 GMT+0530 (India Standard Time)"
         },
-        {
-            id: "2",
-            task: "Practice React",
-            status: "Inprogress",
-        },
-        {
-            id: "3",
-            task: "Do project",
-            status: "Completed",
-        }
     ]);
 
     function addTask() {
@@ -48,6 +39,7 @@ export default function TodoApp() {
             id: uuid(),
             task: newTaskValue,
             status: "Todo",
+            created: Date(),
         }
         todosList.push(newTask);
         setTodos(todosList);
@@ -64,6 +56,7 @@ export default function TodoApp() {
             if (data.id === editTask.id) {
                 data.task = editTask.task;
                 data.status = editTask.status;
+                data.created = Date();
             }
             return data;
         });

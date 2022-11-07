@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { List, Button, Badge, Space } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
-export default function TodoBox({ sNo, id, todoValue, todoStatus, onDeleteTask, onEditTask }) {
+export default function TodoBox({ sNo, id, todoValue, todoStatus, todoCreated, onDeleteTask, onEditTask }) {
     return (
         <List.Item>
             <Button type="default" shape="circle" className="mr-2">
@@ -21,6 +21,7 @@ export default function TodoBox({ sNo, id, todoValue, todoStatus, onDeleteTask, 
                     />
                 }
             />
+            {todoCreated}
             <Space>
                 <Button
                     type="primary"
