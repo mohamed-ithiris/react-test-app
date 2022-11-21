@@ -3,20 +3,22 @@ import TodoTitle from "./TodoTitle";
 import HeaderInputs from "./HeaderInputs";
 
 export default function TodoHeader({
-    refValue,
-    priority,
     onAddTask,
+    taskValue,
+    priority,
     priorityOptions,
-    handlePriorityChange
+    handlePriorityChange,
+    handleTaskChange,
 }) {
     return (
         <div className={'stickyContainer'}>
             <TodoTitle title="Todo List" size={"large"} />
             <HeaderInputs
                 priority={priority}
-                refValue={refValue}
+                taskValue={taskValue}
                 onAddTask={onAddTask}
                 priorityOptions={priorityOptions}
+                handleTaskChange={handleTaskChange}
                 handlePriorityChange={handlePriorityChange}
             />
         </div>
@@ -24,6 +26,10 @@ export default function TodoHeader({
 }
 
 TodoHeader.propTypes = {
-    refValue: PropTypes.object.isRequired,
     onAddTask: PropTypes.func.isRequired,
+    taskValue: PropTypes.string,
+    priority: PropTypes.string,
+    priorityOptions: PropTypes.array,
+    handlePriorityChange: PropTypes.func,
+    handleTaskChange: PropTypes.func,
 }

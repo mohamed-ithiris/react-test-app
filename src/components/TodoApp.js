@@ -16,9 +16,9 @@ const openNotification = (placement) => {
 };
 
 export default function TodoApp() {
-    const taskValue = React.useRef();
     const [openDialog, setOpenDialog] = useState(false);
     const [priority, setPriority] = useState("low");
+    const [taskValue, setTaskValue] = useState("");
     const currentDate = new Date();
     const [todos, setTodos] = useState([
         {
@@ -50,8 +50,12 @@ export default function TodoApp() {
         setPriority(data);
     }
 
+    const handleTaskChange = (event) => {
+        setTaskValue(event.target.value);
+    }
+
     function addTask() {
-        let newTaskValue = taskValue.current.value;
+        let newTaskValue = taskValue;
         if (newTaskValue === "") {
             openNotification("top");
             return null;
@@ -66,7 +70,7 @@ export default function TodoApp() {
         }
         todosList.push(newTask);
         setTodos(todosList);
-        taskValue.current.value = "";
+        setTaskValue("");
         setPriority("low");
     }
 
@@ -110,10 +114,11 @@ export default function TodoApp() {
                     onSetEditTask={setEditTask}
                 />
                 <TodoHeader
-                    refValue={taskValue}
+                    taskValue={taskValue}
                     priority={priority}
                     priorityOptions={priorityOptions}
                     handlePriorityChange={handlePriorityChange}
+                    handleTaskChange={handleTaskChange}
                     onAddTask={addTask}
                 />
                 <TabsContainer

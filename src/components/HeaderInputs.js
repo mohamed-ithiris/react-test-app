@@ -1,22 +1,28 @@
 import PropTypes from "prop-types";
-import { Button, Select } from 'antd';
+import { Button, Input, Select } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
 
 export default function HeaderInputs({
-    refValue,
+    taskValue,
     priority,
     onAddTask,
     priorityOptions,
-    handlePriorityChange
+    handlePriorityChange,
+    handleTaskChange,
 }) {
     return (
         <div className="HeaderContainer">
-            <input
-                ref={refValue}
-                className="custom-input"
-                type="text"
-                placeholder="Type something..."
-                dir="auto"
+            <Input
+                value={taskValue}
+                placeholder="Write a task here"
+                onChange={handleTaskChange}
+                style={{
+                    width: 240,
+                    margin: "8px",
+                    border: "2px solid #eee",
+                    boxShadow: "0 0 15px 4px rgb(0 0 0 / 6%)",
+                    borderRadius: "10px",
+                }}
             />
             <Select
                 defaultValue="low"
@@ -25,6 +31,10 @@ export default function HeaderInputs({
                 options={priorityOptions}
                 style={{
                     width: 120,
+                    margin: "8px",
+                    border: "2px solid #eee",
+                    boxShadow: "0 0 15px 4px rgb(0 0 0 / 6%)",
+                    borderRadius: "10px",
                 }}
             />
             <Button
@@ -40,6 +50,10 @@ export default function HeaderInputs({
 }
 
 HeaderInputs.propTypes = {
-    refValue: PropTypes.object.isRequired,
     onAddTask: PropTypes.func.isRequired,
+    taskValue: PropTypes.string,
+    priority: PropTypes.string,
+    priorityOptions: PropTypes.array,
+    handlePriorityChange: PropTypes.func,
+    handleTaskChange: PropTypes.func,
 }
