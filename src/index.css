@@ -67,3 +67,73 @@ body {
 .mr-2 {
   margin-right: 2%;
 }
+
+.todoSection {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.todoSection div:first-child {
+  width: 10%;
+}
+
+.todoSection div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  width: 35%;
+}
+
+.todoSection div:nth-child(3) {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+}
+
+.todoSection div:last-child {
+  width: 20%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media(max-width:700px) {
+  .todoSection {
+    flex-direction: column;
+  }
+
+  .todoSection div:first-child {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+  }
+
+  .todoSection div:nth-child(2) {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+  }
+
+  .todoSection div:nth-child(2) span {
+    margin-right: 8px;
+  }
+
+  .todoSection div:nth-child(3) {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+  }
+
+  .todoSection div:last-child {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+  }
+
+  .todoSection div:last-child button {
+    margin: 0 8px;
+  }
+}

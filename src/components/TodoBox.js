@@ -1,16 +1,20 @@
 import PropTypes from "prop-types";
-import { List, Button, Badge, Space } from 'antd';
+import { List, Button, Badge } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 export default function TodoBox({ sNo, id, todoValue, todoStatus, todoCreated, onDeleteTask, onEditTask }) {
     return (
         <List.Item>
-            <Button type="default" shape="circle" className="mr-2">
-                {sNo}
-            </Button>
-            <List.Item.Meta
-                title={todoValue}
-                description={
+            <section className="todoSection">
+                <div>
+                    <Button type="default" shape="circle" className="mr-2">
+                        {sNo}
+                    </Button>
+                </div>
+                <div>
+                    <span>
+                        {todoValue}
+                    </span>
                     <Badge
                         style={{
                             backgroundColor: todoStatus === "Todo" ? "#ff4d4f" :
@@ -19,24 +23,26 @@ export default function TodoBox({ sNo, id, todoValue, todoStatus, todoCreated, o
                         }}
                         count={todoStatus}
                     />
-                }
-            />
-            {todoCreated}
-            <Space>
-                <Button
-                    type="primary"
-                    icon={<EditOutlined />}
-                    size={"large"}
-                    onClick={() => onEditTask(id, todoValue, todoStatus)
-                    }
-                />
-                <Button
-                    type="danger"
-                    icon={<DeleteOutlined />}
-                    size={"large"}
-                    onClick={() => onDeleteTask(id)}
-                />
-            </Space>
+                </div>
+                <div>
+                    {todoCreated}
+                </div>
+                <div>
+                    <Button
+                        type="primary"
+                        icon={<EditOutlined />}
+                        size={"large"}
+                        onClick={() => onEditTask(id, todoValue, todoStatus)
+                        }
+                    />
+                    <Button
+                        type="danger"
+                        icon={<DeleteOutlined />}
+                        size={"large"}
+                        onClick={() => onDeleteTask(id)}
+                    />
+                </div>
+            </section>
         </List.Item>
     )
 }
