@@ -28,7 +28,7 @@ export default function CustomSelect({ selectValue, selectOptions, onChangeValue
 }
 
 CustomSelect.propTypes = {
-    selectValue: PropTypes.string.isRequired,
+    selectValue: PropTypes.string,
     onChangeValue: PropTypes.func.isRequired,
     taskLabel: PropTypes.string.isRequired,
 }

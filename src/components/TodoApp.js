@@ -20,15 +20,7 @@ export default function TodoApp() {
     const [priority, setPriority] = useState("low");
     const [taskValue, setTaskValue] = useState("");
     const currentDate = new Date();
-    const [todos, setTodos] = useState([
-        {
-            id: "1",
-            task: "study react",
-            status: "Todo",
-            priority: "low",
-            created: currentDate.toDateString() + currentDate.toLocaleTimeString(),
-        },
-    ]);
+    const [todos, setTodos] = useState([]);
     const [editTask, setEditTask] = useState({ id: "", task: "", status: "", priority: "" });
 
     const priorityOptions = [

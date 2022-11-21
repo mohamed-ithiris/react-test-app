@@ -12,7 +12,7 @@ export default function HeaderInputs({
 }) {
     return (
         <div className="HeaderContainer">
-            <Input
+            Name: <Input
                 value={taskValue}
                 placeholder="Write a task here"
                 onChange={handleTaskChange}
@@ -24,7 +24,7 @@ export default function HeaderInputs({
                     borderRadius: "10px",
                 }}
             />
-            <Select
+            Priority: <Select
                 defaultValue="low"
                 value={priority}
                 onChange={handlePriorityChange}
@@ -42,6 +42,9 @@ export default function HeaderInputs({
                 icon={<PlusCircleFilled />}
                 size={"medium"}
                 onClick={onAddTask}
+                style={{
+                    margin: "8px",
+                }}
             >
                 Add task
             </Button>
