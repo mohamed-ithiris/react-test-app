@@ -13,13 +13,19 @@
   src: url("./fonts/anodina/Anodina-Regular.otf");
 }
 
+:root {
+  --red-color: #ff5631;
+  --blue-color: #2584ff;
+  --yellow-color: #ffab00;
+}
+
 body {
   font-family: AnodinaRegular !important;
 }
 
 .HeaderContainer {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
@@ -81,11 +87,17 @@ body {
 .todoSection div:nth-child(2) {
   display: flex;
   justify-content: space-between;
-  width: 35%;
+  width: 30%;
 }
 
 .todoSection div:nth-child(3) {
-  width: 35%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.todoSection div:nth-child(4) {
+  width: 10%;
   display: flex;
   justify-content: center;
 }
@@ -120,6 +132,13 @@ body {
   }
 
   .todoSection div:nth-child(3) {
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 8px;
+  }
+
+  .todoSection div:nth-child(4) {
     width: 100%;
     align-items: flex-start;
     justify-content: flex-start;

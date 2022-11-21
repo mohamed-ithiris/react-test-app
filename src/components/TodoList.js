@@ -14,6 +14,7 @@ export default function TodoList({ todoList, onDeleteTask, onEditTask }) {
                     id={list.id}
                     todoValue={list.task}
                     todoStatus={list.status}
+                    todoPriority={list.priority}
                     onDeleteTask={onDeleteTask}
                     onEditTask={onEditTask}
                     todoCreated={list.created}

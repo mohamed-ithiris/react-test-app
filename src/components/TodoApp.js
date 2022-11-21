@@ -18,16 +18,37 @@ const openNotification = (placement) => {
 export default function TodoApp() {
     const taskValue = React.useRef();
     const [openDialog, setOpenDialog] = useState(false);
-    const [editTask, setEditTask] = useState({ id: "", task: "", status: "" });
+    const [priority, setPriority] = useState("low");
     const currentDate = new Date();
     const [todos, setTodos] = useState([
         {
             id: "1",
             task: "study react",
             status: "Todo",
+            priority: "low",
             created: currentDate.toDateString() + currentDate.toLocaleTimeString(),
         },
     ]);
+    const [editTask, setEditTask] = useState({ id: "", task: "", status: "", priority: "" });
+
+    const priorityOptions = [
+        {
+            value: 'low',
+            label: 'low',
+        },
+        {
+            value: 'medium',
+            label: 'medium',
+        },
+        {
+            value: 'high',
+            label: 'high',
+        },
+    ];
+
+    const handlePriorityChange = (data) => {
+        setPriority(data);
+    }
 
     function addTask() {
         let newTaskValue = taskValue.current.value;
@@ -40,15 +61,17 @@ export default function TodoApp() {
             id: uuid(),
             task: newTaskValue,
             status: "Todo",
+            priority: priority,
             created: currentDate.toDateString() + " " + currentDate.toLocaleTimeString(),
         }
         todosList.push(newTask);
         setTodos(todosList);
         taskValue.current.value = "";
+        setPriority("low");
     }
 
-    function setTaskData(id, todoValue, todoStatus) {
-        setEditTask({ id, task: todoValue, status: todoStatus })
+    function setTaskData(id, todoValue, todoStatus, todoPriority) {
+        setEditTask({ id, task: todoValue, status: todoStatus, priority: todoPriority })
         setOpenDialog(true);
     }
 
@@ -57,6 +80,7 @@ export default function TodoApp() {
             if (data.id === editTask.id) {
                 data.task = editTask.task;
                 data.status = editTask.status;
+                data.priority = editTask.priority;
             }
             return data;
         });
@@ -87,6 +111,9 @@ export default function TodoApp() {
                 />
                 <TodoHeader
                     refValue={taskValue}
+                    priority={priority}
+                    priorityOptions={priorityOptions}
+                    handlePriorityChange={handlePriorityChange}
                     onAddTask={addTask}
                 />
                 <TabsContainer

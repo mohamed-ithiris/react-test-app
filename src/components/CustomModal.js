@@ -8,11 +8,10 @@ export default function CustomModal({
     onCancel,
     onUpdate,
     editValue,
-    onSetEditTask
+    onSetEditTask,
 }) {
 
     const onhandleSelectChange = (value) => {
-        // const { target: { value } } = event;
         onSetEditTask({
             ...editValue,
             status: value
@@ -24,6 +23,13 @@ export default function CustomModal({
         onSetEditTask({
             ...editValue,
             task: value
+        })
+    }
+
+    const handlePriorityChange = (data) => {
+        onSetEditTask({
+            ...editValue,
+            priority: data
         })
     }
 
@@ -48,6 +54,12 @@ export default function CustomModal({
                 taskLabel={"Status"}
                 selectValue={editValue.status}
                 onChangeValue={onhandleSelectChange}
+            />
+            <CustomSelect
+                taskLabel={"Priority"}
+                selectValue={editValue.priority}
+                onChangeValue={handlePriorityChange}
+                selectOptions={["low", "medium", "high"]}
             />
         </Modal>
 
